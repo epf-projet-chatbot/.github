@@ -1,56 +1,52 @@
 # Création d'un ChatBot juridique
 
-## Répartition des tâches
+## Étapes
 
 ### Frontend
-- Daphné
-- Maewenn
+- Maiwenn
 - Clément
-- Quentin
+- Minh
 
-### Maquettage
-- Matthieu
-- Romane
+### Maquettes graphiques
+- Maiwenn
+- Clément
+- Minh
 
 ### Backend
 #### Logique 
-- Samy
 - Noémie
 - Quentin
 
 #### Base de données
-- Théo
-- Romain
-
-#### NLP
-- Alberique
-- Pierre-?
-
-#### Modèle IA
-- Minh
-- Léopold
-
-#### Architecture RAG et LLM
-- Guillaume
-- Nassim
-
-#### Web
-- Gabriel
-- Rémi
-- Alexandre
+- Noémie
 - Quentin
 
-## Livrables
+#### NLP
+- Noémie
+- Quentin
 
+#### Modèle IA
+- Noémie
+- Quentin
+
+#### Architecture RAG et LLM
+- Noémie
+- Quentin
+
+#### Web
+- Noémie
+- Quentin
+
+
+## Livrables
 - Code source
 - Rapport
 
 ## Contexte
-
 - Motivations
 - Besoin / problématique
 
-## Objetcifs
+## Objectifs
 
 ### Fonctionnels
 Les fonctionnalités qu'on implémente dans l'application.
@@ -59,11 +55,9 @@ Les fonctionnalités qu'on implémente dans l'application.
 Ex : Simplicité, sécurité, scalabilité
 
 ## Périmètre de fonctionnement
-
 - Pipeline de l'appli
 
 ## Etat de l'art
-
 - Travaux existants
     - Chatbots
     - Pipelines
@@ -102,7 +96,6 @@ Aide à la compréhension du RGPD, de la fiscalité, du droit des sociétés, du
 
 
 ### Exemples
-
 [law.co](https://law.co/) : S'appuie sur le modèle GPT-4 pour aider les personnes travaillant dans le domaine légal à générer leurs documents.
 [rasa](https://github.com/RasaHQ/rasa) : Un chatbot opensource 
 [wit.ai](https://github.com/wit-ai) : Outil opensource de création et d'entraînement de chatbots disponible en Node.js, Python, Go, Ruby et Unity
@@ -110,25 +103,20 @@ Aide à la compréhension du RGPD, de la fiscalité, du droit des sociétés, du
 ## Conception
 
 ### Diagrammes
-
 - De classe
 - De cas d'utilisation
 - Pas de diagramme séquence
 
 ### Maquettes graphiques
-
 - Accueil
 - Connexion
 - Création de compte
 - Discussion
 
 ### Base de données
-
 On ne choisit pas une base de données relationnelle (SQL) mais plutôt une base de données en NoSQL.
-
 Actuellement la base de données est constituée en majeure partie de PDF qu'il faut convertir en JSON.
 
 ## Méthode de travail
-
-- Dashboard: Odoo/Trello
+- Dashboard
 - Diagramme de Gantt
