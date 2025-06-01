@@ -1,66 +1,91 @@
-# Création d'un ChatBot juridique
+# ChatBot Juridique
 
-## Répartition des tâches
+> Un assistant conversationnel intelligent spécialisé dans le domaine juridique pour les Junior Entreprises, utilisant l'architecture RAG (Retrieval-Augmented Generation) pour fournir des réponses précises et contextualisées.
 
-### Frontend
-- Daphné
-- Maewenn
-- Clément
-- Quentin
+## Table des matières
 
-### Maquettage
-- Matthieu
-- Romane
+- [Aperçu du projet](#aperçu-du-projet)
+- [Architecture](#architecture)
+- [Démarrage rapide](#démarrage-rapide)
+- [Repositories](#repositories)
+- [Documentation](#documentation)
+- [État de l'art](#état-de-lart)
 
-### Backend
-#### Logique 
-- Samy
-- Noémie
-- Quentin
+---
 
-#### Base de données
-- Théo
-- Romain
+## Aperçu du projet
 
-#### NLP
-- Alberique
-- Pierre-?
+### Contexte et motivation
 
-#### Modèle IA
-- Minh
-- Léopold
+Le domaine juridique nécessite un accès rapide et précis à l'information. Notre ChatBot juridique vise à automatiser les tâches répétitives et à faciliter l'accès aux ressources juridiques.
 
-#### Architecture RAG et LLM
-- Guillaume
-- Nassim
+### Objectifs
 
-#### Web
-- Gabriel
-- Rémi
-- Alexandre
-- Quentin
+#### Fonctionnels
+- Réponse automatique aux questions juridiques fréquentes
+- Recherche et extraction d'informations dans les documents juridiques
+- Orientation vers les textes appropriés
+- Explication de procédures et termes juridiques
 
-## Livrables
+#### Non fonctionnels
+- **Simplicité** : Interface intuitive et accessible
+- **Sécurité** : Protection des données sensibles
+- **Scalabilité** : Capacité à traiter un grand volume de requêtes
+- **Fiabilité** : Réponses précises et vérifiées
 
-- Code source
-- Rapport
+---
 
-## Contexte
+## Architecture
 
-- Motivations
-- Besoin / problématique
+### Fonctionnement du RAG
 
-## Objetcifs
+```mermaid
+flowchart TD
+    A["Utilisateur"] --"Requête"--> B["Vectorisation"] 
+    A --"Requête"--> C["LLM"]
+    B --"Retrieval"--> D[("Base de données vectorielle")]
+    D --"Chunks pertinents"--> C
+    C --"Réponse"--> A
+```
 
-### Fonctionnels
-Les fonctionnalités qu'on implémente dans l'application.
+### Architecture globale
 
-### Non fonctionnels
-Ex : Simplicité, sécurité, scalabilité
+```mermaid
+flowchart TD
+    %% Données sources
+    D["Données brutes"] --> F["Formattage"]
+    F --> E["Embedding"]
+    E --> Ch["Découpage en chunks"]
+    Ch --> V["Vectorisation"]
+    V --> BDD-RAG[("BDD vectorielle")]
+    
+    %% Application web
+    USER["Utilisateur"] --> WEB["Interface Web"]
+    WEB --> API["API Backend"]
+    API --> BDD-RAG
+    API --> BDD-MSG[("BDD Messages")]
+    API --> LLM["Modèle IA"]
+```
 
-## Périmètre de fonctionnement
+---
 
-- Pipeline de l'appli
+## Démarrage rapide
+
+TO DO
+
+---
+## Repositories
+
+| Repository | Description | Technologies | Status |
+|------------|-------------|--------------|--------|
+| **legal-chatbot-main** | Repository principal et orchestration | Docker, Docker Compose | ![Status](https://img.shields.io/badge/status-en%20cours-yellow) |
+| **legal-chatbot-front** | Interface utilisateur | React, TypeScript, Tailwind | ![Status](https://img.shields.io/badge/status-en%20cours-yellow) |
+| **legal-chatbot-back** | API et logique métier | Node.js, Express, Python | ![Status](https://img.shields.io/badge/status-en%20cours-yellow) |
+| **legal-chatbot-ai** | Modèles IA et RAG | Python, Langchain, OpenAI | ![Status](https://img.shields.io/badge/status-planifié-blue) |
+| **vectorisation** | Gestion des données et vectorisation | Python, ChromaDB, Embeddings | ![Status](https://img.shields.io/badge/status-planifié-blue) |
+| **docs** | Documentation technique | GitBook, Markdown | ![Status](https://img.shields.io/badge/status-planifié-blue) |
+
+---
 
 ## Etat de l'art
 
@@ -106,29 +131,3 @@ Aide à la compréhension du RGPD, de la fiscalité, du droit des sociétés, du
 [law.co](https://law.co/) : S'appuie sur le modèle GPT-4 pour aider les personnes travaillant dans le domaine légal à générer leurs documents.
 [rasa](https://github.com/RasaHQ/rasa) : Un chatbot opensource 
 [wit.ai](https://github.com/wit-ai) : Outil opensource de création et d'entraînement de chatbots disponible en Node.js, Python, Go, Ruby et Unity
-
-## Conception
-
-### Diagrammes
-
-- De classe
-- De cas d'utilisation
-- Pas de diagramme séquence
-
-### Maquettes graphiques
-
-- Accueil
-- Connexion
-- Création de compte
-- Discussion
-
-### Base de données
-
-On ne choisit pas une base de données relationnelle (SQL) mais plutôt une base de données en NoSQL.
-
-Actuellement la base de données est constituée en majeure partie de PDF qu'il faut convertir en JSON.
-
-## Méthode de travail
-
-- Dashboard: Odoo/Trello
-- Diagramme de Gantt
