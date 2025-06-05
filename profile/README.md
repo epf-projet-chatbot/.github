@@ -50,28 +50,118 @@ flowchart TD
 
 ### Architecture globale
 
+L'application suit une architecture microservices orchestrée par Docker Compose :
+
 ```mermaid
 flowchart TD
-    %% Données sources
-    D["Données brutes"] --> F["Formattage"]
-    F --> E["Embedding"]
-    E --> Ch["Découpage en chunks"]
-    Ch --> V["Vectorisation"]
-    V --> BDD-RAG[("BDD vectorielle")]
+    %% Infrastructure Docker
+    subgraph INFRA["🐳 Infrastructure Docker (infra/)"]
+        COMPOSE["docker-compose.yml"]
+    end
     
-    %% Application web
-    USER["Utilisateur"] --> WEB["Interface Web"]
-    WEB --> API["API Backend"]
-    API --> BDD-RAG
-    API --> BDD-MSG[("BDD Messages")]
-    API --> LLM["Modèle IA"]
+    %% Services Backend
+    subgraph BACKEND["🔧 Services Backend"]
+        MONGO[("🗄️ MongoDB<br/>Port 27017")]
+        SCRAP["📊 Scraping Kiwix<br/>Collecte données"]
+        VECTOR["🔤 Vectorisation<br/>Pipeline ML"]
+        API["🔌 API Backend<br/>Port 8000"]
+    end
+    
+    %% Frontend
+    subgraph FRONTEND["🎨 Interface Utilisateur"]
+        WEB["⚛️ React Frontend<br/>Port 3000"]
+    end
+    
+    %% Flux de données
+    COMPOSE --> MONGO
+    COMPOSE --> SCRAP
+    COMPOSE --> VECTOR
+    COMPOSE --> API
+    COMPOSE --> WEB
+    
+    SCRAP --> MONGO
+    VECTOR --> MONGO
+    API --> MONGO
+    WEB --> API
+    
+    %% Utilisateur
+    USER["👤 Utilisateur"] --> WEB
+```
+
+### Flux de traitement des données
+
+```mermaid
+flowchart LR
+    %% Collecte
+    A["📚 Sources juridiques<br/>(Kiwix)"] --> B["🔄 Scraping"]
+    
+    %% Traitement
+    B --> C["📄 Documents bruts"]
+    C --> D["✂️ Découpage chunks"]
+    D --> E["🧠 Génération embeddings"]
+    E --> F[("🗄️ Base vectorielle<br/>MongoDB")]
+    
+    %% Application
+    F --> G["🔍 Recherche RAG"]
+    G --> H["🤖 LLM + Context"]
+    H --> I["💬 Réponse utilisateur"]
+    
+    %% Interface
+    J["👤 Question utilisateur"] --> G
 ```
 
 ---
 
 ## Démarrage rapide
 
-TO DO
+### Prérequis
+
+- Docker et Docker Compose installés
+- Git pour cloner le repository
+
+### Lancement de l'application complète
+
+L'ensemble de l'application est orchestré via Docker Compose dans le dossier `infra/`. Cette configuration lance tous les services nécessaires :
+
+```bash
+# Cloner le repository
+git clone <url-du-repo>
+cd chatbot
+
+# Lancer tous les services
+cd infra/
+docker-compose up -d
+
+# Voir les logs en temps réel
+docker-compose logs -f
+
+# Arrêter tous les services
+docker-compose down
+```
+
+### Services déployés
+
+Le docker-compose lance automatiquement :
+
+1. **MongoDB** (Port 27017) - Base de données principale
+2. **Service de scraping** - Collecte des données juridiques depuis Kiwix
+3. **Pipeline de vectorisation** - Traitement et vectorisation des documents
+4. **API Backend** (Port 8000) - API REST pour le chatbot
+5. **Frontend** (Port 3000) - Interface utilisateur React
+
+### Accès aux services
+
+- **Interface utilisateur** : http://localhost:3000
+- **API Backend** : http://localhost:8000
+- **MongoDB** : localhost:27017 (admin/password)
+
+### Configuration
+
+Les variables d'environnement sont configurées directement dans le `docker-compose.yml`. Pour la production, il est recommandé d'utiliser des fichiers `.env` séparés.
+
+### Développement
+
+Pour le développement local, vous pouvez lancer les services individuellement ou utiliser les volumes montés pour le hot reload du frontend.
 
 ---
 ## Repositories
