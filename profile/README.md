@@ -55,21 +55,21 @@ L'application suit une architecture microservices orchestrée par Docker Compose
 ```mermaid
 flowchart TD
     %% Infrastructure Docker
-    subgraph INFRA["🐳 Infrastructure Docker (infra/)"]
+    subgraph INFRA["🐳 Infrastructure Docker"]
         COMPOSE["docker-compose.yml"]
     end
     
     %% Services Backend
     subgraph BACKEND["🔧 Services Backend"]
-        MONGO[("🗄️ MongoDB<br/>Port 27017")]
-        SCRAP["📊 Scraping Kiwix<br/>Collecte données"]
-        VECTOR["🔤 Vectorisation<br/>Pipeline ML"]
-        API["🔌 API Backend<br/>Port 8000"]
+        MONGO[("🗄MongoDB<br/>Port 27017")]
+        SCRAP["Scraping Kiwix<br/>Collecte données"]
+        VECTOR["Vectorisation<br/>Pipeline ML"]
+        API["API Backend<br/>Port 8000"]
     end
     
     %% Frontend
-    subgraph FRONTEND["🎨 Interface Utilisateur"]
-        WEB["⚛️ React Frontend<br/>Port 3000"]
+    subgraph FRONTEND["Interface Utilisateur"]
+        WEB["⚛React Frontend<br/>Port 3000"]
     end
     
     %% Flux de données
@@ -85,7 +85,7 @@ flowchart TD
     WEB --> API
     
     %% Utilisateur
-    USER["👤 Utilisateur"] --> WEB
+    USER["Utilisateur"] --> WEB
 ```
 
 ### Flux de traitement des données
@@ -93,21 +93,21 @@ flowchart TD
 ```mermaid
 flowchart LR
     %% Collecte
-    A["📚 Sources juridiques<br/>(Kiwix)"] --> B["🔄 Scraping"]
+    A["Sources juridiques<br/>(Kiwix)"] --> B["Scraping"]
     
     %% Traitement
-    B --> C["📄 Documents bruts"]
-    C --> D["✂️ Découpage chunks"]
-    D --> E["🧠 Génération embeddings"]
-    E --> F[("🗄️ Base vectorielle<br/>MongoDB")]
+    B --> C["Documents bruts"]
+    C --> D["✂Découpage chunks"]
+    D --> E["Génération embeddings"]
+    E --> F[("🗄Base vectorielle<br/>MongoDB")]
     
     %% Application
-    F --> G["🔍 Recherche RAG"]
-    G --> H["🤖 LLM + Context"]
-    H --> I["💬 Réponse utilisateur"]
+    F --> G["Recherche RAG"]
+    G --> H["LLM + Context"]
+    H --> I["Réponse utilisateur"]
     
     %% Interface
-    J["👤 Question utilisateur"] --> G
+    J["Question utilisateur"] --> G
 ```
 
 ---
