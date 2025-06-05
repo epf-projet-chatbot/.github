@@ -166,15 +166,16 @@ Pour le développement local, vous pouvez lancer les services individuellement o
 ---
 ## Repositories
 
+## Repositories
+
 | Repository | Description | Technologies | Status |
 |------------|-------------|--------------|--------|
-| **legal-chatbot-main** | Repository principal et orchestration | Docker, Docker Compose | ![Status](https://img.shields.io/badge/status-en%20cours-yellow) |
-| **legal-chatbot-front** | Interface utilisateur | React, TypeScript, Tailwind | ![Status](https://img.shields.io/badge/status-en%20cours-yellow) |
-| **legal-chatbot-back** | API et logique métier | Node.js, Express, Python | ![Status](https://img.shields.io/badge/status-en%20cours-yellow) |
-| **legal-chatbot-ai** | Modèles IA et RAG | Python, Langchain, OpenAI | ![Status](https://img.shields.io/badge/status-planifié-blue) |
-| **vectorisation** | Gestion des données et vectorisation | Python, ChromaDB, Embeddings | ![Status](https://img.shields.io/badge/status-planifié-blue) |
-| **docs** | Documentation technique | GitBook, Markdown | ![Status](https://img.shields.io/badge/status-planifié-blue) |
-
+| **[legal-chatbot-main](https://github.com/epf-projet-chatbot/legal-chatbot-main)** | Repository principal et orchestration | Docker, Docker Compose | ![Status](https://img.shields.io/badge/status-en%20cours-yellow) |
+| **[legal-chatbot-front](https://github.com/epf-projet-chatbot/legal-chatbot-front)** | Interface utilisateur | React, TypeScript, Tailwind | ![Status](https://img.shields.io/badge/status-en%20cours-yellow) |
+| **[legal-chatbot-back](https://github.com/epf-projet-chatbot/legal-chatbot-back)** | API et logique métier | Node.js, Express, Python | ![Status](https://img.shields.io/badge/status-en%20cours-yellow) |
+| **[legal-chatbot-ai](https://github.com/epf-projet-chatbot/legal-chatbot-ai)** | Modèles IA et RAG | Python, Langchain, OpenAI | ![Status](https://img.shields.io/badge/status-planifié-blue) |
+| **[vectorisation](https://github.com/epf-projet-chatbot/vectorisation)** | Gestion des données et vectorisation | Python, ChromaDB, Embeddings | ![Status](https://img.shields.io/badge/status-planifié-blue) |
+| **[docs](https://github.com/epf-projet-chatbot/docs)** | Documentation technique | GitBook, Markdown | ![Status](https://img.shields.io/badge/status-planifié-blue) |
 ---
 
 ## Etat de l'art
