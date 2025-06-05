@@ -220,5 +220,7 @@ Aide à la compréhension du RGPD, de la fiscalité, du droit des sociétés, du
 ### Exemples
 
 [law.co](https://law.co/) : S'appuie sur le modèle GPT-4 pour aider les personnes travaillant dans le domaine légal à générer leurs documents.
+
 [rasa](https://github.com/RasaHQ/rasa) : Un chatbot opensource 
+
 [wit.ai](https://github.com/wit-ai) : Outil opensource de création et d'entraînement de chatbots disponible en Node.js, Python, Go, Ruby et Unity
