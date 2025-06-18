@@ -88,81 +88,6 @@ flowchart TD
     USER["Utilisateur"] --> WEB
 ```
 
-### Flux de traitement des données
-
-```mermaid
-flowchart LR
-    %% Collecte
-    A["Sources juridiques<br/>(Kiwix)"] --> B["Scraping"]
-    
-    %% Traitement
-    B --> C["Documents bruts"]
-    C --> D["✂Découpage chunks"]
-    D --> E["Génération embeddings"]
-    E --> F[("Base vectorielle<br/>MongoDB")]
-    
-    %% Application
-    F --> G["Recherche RAG"]
-    G --> H["LLM + Context"]
-    H --> I["Réponse utilisateur"]
-    
-    %% Interface
-    J["Question utilisateur"] --> G
-```
-
----
-
-## Démarrage rapide
-
-### Prérequis
-
-- Docker et Docker Compose installés
-- Git pour cloner le repository
-
-### Lancement de l'application complète
-
-L'ensemble de l'application est orchestré via Docker Compose dans le dossier `infra/`. Cette configuration lance tous les services nécessaires :
-
-```bash
-# Cloner le repository
-git clone <url-du-repo>
-cd chatbot
-
-# Lancer tous les services
-cd infra/
-docker-compose up -d
-
-# Voir les logs en temps réel
-docker-compose logs -f
-
-# Arrêter tous les services
-docker-compose down
-```
-
-### Services déployés
-
-Le docker-compose lance automatiquement :
-
-1. **MongoDB** (Port 27017) - Base de données principale
-2. **Service de scraping** - Collecte des données juridiques depuis Kiwix
-3. **Pipeline de vectorisation** - Traitement et vectorisation des documents
-4. **API Backend** (Port 8000) - API REST pour le chatbot
-5. **Frontend** (Port 3000) - Interface utilisateur React
-
-### Accès aux services
-
-- **Interface utilisateur** : http://localhost:3000
-- **API Backend** : http://localhost:8000
-- **MongoDB** : localhost:27017 (admin/password)
-
-### Configuration
-
-Les variables d'environnement sont configurées directement dans le `docker-compose.yml`. Pour la production, il est recommandé d'utiliser des fichiers `.env` séparés.
-
-### Développement
-
-Pour le développement local, vous pouvez lancer les services individuellement ou utiliser les volumes montés pour le hot reload du frontend.
-
 ---
 ## Repositories
 
@@ -170,7 +95,6 @@ Pour le développement local, vous pouvez lancer les services individuellement o
 
 | Repository | Description | Technologies | Status |
 |------------|-------------|--------------|--------|
-| **[infra](https://github.com/epf-projet-chatbot/infra)** | Repository principal et orchestration | Docker, Docker Compose | ![Status](https://img.shields.io/badge/status-en%20cours-yellow) |
 | **[legal-chatbot-front](https://github.com/epf-projet-chatbot/legal-chatbot-front)** | Interface utilisateur | React, TypeScript, Tailwind | ![Status](https://img.shields.io/badge/status-fait-green) |
 | **[api](https://github.com/epf-projet-chatbot/api)** | API | FastAPI, Python | ![Status](https://img.shields.io/badge/status-fait-green) |
 | **[vectorisation](https://github.com/epf-projet-chatbot/vectorisation)** | Gestion des données et vectorisation | Python, MongoDB, HuggingFace, Embeddings | ![Status](https://img.shields.io/badge/status-fait-green) |
