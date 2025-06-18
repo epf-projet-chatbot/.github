@@ -55,13 +55,13 @@ L'application suit une architecture microservices orchestrée par Docker Compose
 ```mermaid
 flowchart TD
     %% Infrastructure Docker
-    subgraph INFRA["🐳 Infrastructure Docker"]
+    subgraph INFRA["Infrastructure Docker"]
         COMPOSE["docker-compose.yml"]
     end
     
     %% Services Backend
-    subgraph BACKEND["🔧 Services Backend"]
-        MONGO[("🗄MongoDB<br/>Port 27017")]
+    subgraph BACKEND["Services Backend"]
+        MONGO[("MongoDB<br/>Port 27017")]
         SCRAP["Scraping Kiwix<br/>Collecte données"]
         VECTOR["Vectorisation<br/>Pipeline ML"]
         API["API Backend<br/>Port 8000"]
@@ -99,7 +99,7 @@ flowchart LR
     B --> C["Documents bruts"]
     C --> D["✂Découpage chunks"]
     D --> E["Génération embeddings"]
-    E --> F[("🗄Base vectorielle<br/>MongoDB")]
+    E --> F[("Base vectorielle<br/>MongoDB")]
     
     %% Application
     F --> G["Recherche RAG"]
@@ -171,10 +171,10 @@ Pour le développement local, vous pouvez lancer les services individuellement o
 | Repository | Description | Technologies | Status |
 |------------|-------------|--------------|--------|
 | **[infra](https://github.com/epf-projet-chatbot/infra)** | Repository principal et orchestration | Docker, Docker Compose | ![Status](https://img.shields.io/badge/status-en%20cours-yellow) |
-| **[legal-chatbot-front](https://github.com/epf-projet-chatbot/legal-chatbot-front)** | Interface utilisateur | React, TypeScript, Tailwind | ![Status](https://img.shields.io/badge/status-en%20cours-yellow) |
-| **[api](https://github.com/epf-projet-chatbot/api)** | API | FastAPI, Python | ![Status](https://img.shields.io/badge/status-en%20cours-yellow) |
-| **[ai](https://github.com/epf-projet-chatbot/ai)** | Modèles IA et RAG | Python, HuggingFace, groq | ![Status](https://img.shields.io/badge/status-à%20faire-red) |
+| **[legal-chatbot-front](https://github.com/epf-projet-chatbot/legal-chatbot-front)** | Interface utilisateur | React, TypeScript, Tailwind | ![Status](https://img.shields.io/badge/status-fait-green) |
+| **[api](https://github.com/epf-projet-chatbot/api)** | API | FastAPI, Python | ![Status](https://img.shields.io/badge/status-fait-green) |
 | **[vectorisation](https://github.com/epf-projet-chatbot/vectorisation)** | Gestion des données et vectorisation | Python, MongoDB, HuggingFace, Embeddings | ![Status](https://img.shields.io/badge/status-fait-green) |
+| **[rag](https://github.com/epf-projet-chatbot/rag)** | Vectorisation et pipeline RAG | Python, ChromaDB, API Gemini | ![Status](https://img.shields.io/badge/status-fait-green) |
 | **[docs](https://github.com/epf-projet-chatbot/docs)** | Documentation technique | Markdown | ![Status](https://img.shields.io/badge/status-planifié-blue) |
 ---
 
