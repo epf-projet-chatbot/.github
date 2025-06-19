@@ -2,6 +2,10 @@
 
 > Un assistant conversationnel intelligent spécialisé dans le domaine juridique pour les Junior Entreprises, utilisant l'architecture RAG (Retrieval-Augmented Generation) pour fournir des réponses précises et contextualisées.
 
+## Site en production
+
+Le site est accessible à l’adresse suivante : [badinter-projet.epfprojets.com](https://badinter-projet.epfprojets.com)
+
 ## Table des matières
 
 - [Aperçu du projet](#aperçu-du-projet)
