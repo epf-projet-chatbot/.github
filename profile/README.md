@@ -99,7 +99,6 @@ flowchart TD
 | **[api](https://github.com/epf-projet-chatbot/api)** | API | FastAPI, Python | ![Status](https://img.shields.io/badge/status-fait-green) |
 | **[vectorisation](https://github.com/epf-projet-chatbot/vectorisation)** | Gestion des données et vectorisation | Python, MongoDB, HuggingFace, Embeddings | ![Status](https://img.shields.io/badge/status-fait-green) |
 | **[rag](https://github.com/epf-projet-chatbot/rag)** | Vectorisation et pipeline RAG | Python, ChromaDB, API Gemini | ![Status](https://img.shields.io/badge/status-fait-green) |
-| **[docs](https://github.com/epf-projet-chatbot/docs)** | Documentation technique | Markdown | ![Status](https://img.shields.io/badge/status-planifié-blue) |
 ---
 
 ## Etat de l'art
